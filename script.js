@@ -106,13 +106,20 @@ trickyButton.addEventListener('click', function(e) {
     }, 100);
     
     if (clickCount >= maxClicks) {
-        this.textContent = '✅ Berhasil! Tunggu sebentar...';
+        this.textContent = 'Berhasil! Tunggu sebentar...';
         this.style.cursor = 'default';
+        
+        // Launch confetti for success!
+        initConfetti();
+        launchConfetti();
         
         // Start Netflix intro after 1 second
         setTimeout(() => {
+            // Clear confetti before starting Netflix
+            confettiParticles = [];
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             startNetflixIntro();
-        }, 1000);
+        }, 2000);
     } else {
         // Funny messages as they click
         const messages = [
@@ -142,20 +149,21 @@ function startNetflixIntro() {
     introScreen.classList.remove('active');
     netflixIntro.classList.add('active');
     
-    // After 3 seconds, show main content
+    // After 3.5 seconds, show main content with confetti
     setTimeout(() => {
         netflixIntro.classList.remove('active');
         mainContent.classList.add('active');
+        
+        // Launch confetti when entering chapter 1!
+        initConfetti();
+        setTimeout(() => {
+            launchConfetti();
+        }, 300);
         
         // Start background music
         const bgMusic = document.getElementById('bg-music');
         bgMusic.volume = 0.3;
         bgMusic.play().catch(e => console.log('Audio autoplay blocked'));
-        
-        // Start confetti on last card
-        setTimeout(() => {
-            initConfetti();
-        }, 1000);
     }, 3500);
 }
 
