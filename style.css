@@ -1,0 +1,441 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #141414;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   INTRO SCREEN - Tombol Nakal
+   ============================================ */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #141414 0%, #1a1a1a 100%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#intro-screen.active {
+    display: flex;
+}
+
+.intro-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+.intro-content h1 {
+    font-size: 3rem;
+    color: #E50914;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 3rem;
+}
+
+#tricky-button {
+    position: relative;
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #E50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+}
+
+#tricky-button:hover {
+    background: #f40612;
+    transform: scale(1.05);
+}
+
+.hint {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* ============================================
+   NETFLIX INTRO ANIMATION
+   ============================================ */
+#netflix-intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998;
+}
+
+#netflix-intro.active {
+    display: flex;
+}
+
+.netflix-content {
+    position: relative;
+}
+
+.netflix-n {
+    font-size: 15rem;
+    font-weight: 900;
+    color: #E50914;
+    font-family: 'Impact', sans-serif;
+    animation: netflixIntro 3s ease-in-out;
+    text-shadow: 0 0 80px rgba(229, 9, 20, 0.8);
+}
+
+@keyframes netflixIntro {
+    0% {
+        transform: scale(0.1);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+#main-content {
+    display: none;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+#main-content.active {
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Music Control */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #E50914;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(229, 9, 20, 0.4);
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(229, 9, 20, 0.6);
+}
+
+/* Header */
+.birthday-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+}
+
+.glitch {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #E50914;
+    position: relative;
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
+    }
+    25% {
+        text-shadow: -2px 0 10px rgba(229, 9, 20, 0.8), 2px 2px 10px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 2px 0 10px rgba(229, 9, 20, 0.8), -2px -2px 10px rgba(255, 255, 255, 0.5);
+    }
+    75% {
+        text-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
+    }
+}
+
+.name-title {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin: 1rem 0;
+    letter-spacing: 3px;
+}
+
+.birthday-info {
+    font-size: 1.2rem;
+    color: #999;
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   BOOK CARD SYSTEM
+   ============================================ */
+.book-container {
+    perspective: 1500px;
+    margin: 2rem auto;
+}
+
+.book {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 600px;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    border: 2px solid #E50914;
+    opacity: 0;
+    transform: translateX(100%) rotateY(-15deg);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+.card.active {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.card.prev {
+    opacity: 0;
+    transform: translateX(-100%) rotateY(15deg);
+}
+
+.card-content {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-image {
+    flex: 1;
+    min-width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(229, 9, 20, 0.3);
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card-image:hover img {
+    transform: scale(1.05);
+}
+
+.card-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.card-text h3 {
+    font-size: 2rem;
+    color: #E50914;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+.card-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #cccccc;
+}
+
+.final-message {
+    font-size: 1.2rem !important;
+    font-weight: 500;
+    color: #ffffff !important;
+}
+
+.confetti-trigger {
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 2rem;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Book Navigation */
+.book-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.nav-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: #E50914;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(229, 9, 20, 0.3);
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: #f40612;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(229, 9, 20, 0.5);
+}
+
+.nav-btn:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.page-indicator {
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* ============================================
+   CONFETTI CANVAS
+   ============================================ */
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .intro-content h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .glitch {
+        font-size: 2.5rem;
+    }
+
+    .name-title {
+        font-size: 1.8rem;
+    }
+
+    .birthday-info {
+        font-size: 1rem;
+    }
+
+    .netflix-n {
+        font-size: 8rem;
+    }
+
+    .card-content {
+        flex-direction: column;
+    }
+
+    .card-image,
+    .card-text {
+        min-width: 100%;
+    }
+
+    .card-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-text p {
+        font-size: 1rem;
+    }
+
+    .book-nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-btn {
+        width: 100%;
+    }
+}
