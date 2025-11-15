@@ -53,7 +53,7 @@ Website birthday interaktif dengan tema Netflix untuk merayakan ulang tahun ke-2
 ## 📁 Struktur File
 
 ```
-birthday-aurola/
+birthday-project/
 │
 ├── index.html          # Struktur HTML utama
 ├── style.css           # Styling dengan tema Netflix
