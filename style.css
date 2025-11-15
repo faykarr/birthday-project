@@ -9,6 +9,8 @@ body {
     background: #141414;
     color: #ffffff;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 /* ============================================
@@ -33,11 +35,12 @@ body {
 
 .intro-content {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
+    width: 100%;
 }
 
 .intro-content h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     color: #E50914;
     margin-bottom: 1rem;
     text-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
@@ -45,35 +48,39 @@ body {
 }
 
 .subtitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #ffffff;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 #tricky-button {
-    position: relative;
-    padding: 1.2rem 3rem;
-    font-size: 1.2rem;
+    position: fixed;
+    padding: 1rem 2rem;
+    font-size: 1rem;
     font-weight: bold;
     background: #E50914;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-#tricky-button:hover {
+#tricky-button:active {
     background: #f40612;
-    transform: scale(1.05);
+    transform: scale(0.95);
 }
 
 .hint {
     margin-top: 2rem;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #999;
     font-style: italic;
+    padding: 0 1rem;
 }
 
 /* ============================================
@@ -126,7 +133,7 @@ body {
 }
 
 .netflix-n {
-    font-size: 15rem;
+    font-size: 8rem;
     font-weight: 900;
     color: #E50914;
     font-family: 'Impact', sans-serif;
@@ -180,7 +187,7 @@ body {
 #main-content {
     display: none;
     min-height: 100vh;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 #main-content.active {
@@ -188,44 +195,46 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
+    padding: 0;
 }
 
 /* Music Control */
 .music-control {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     z-index: 1000;
 }
 
 .music-btn {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #E50914;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(229, 9, 20, 0.4);
+    touch-action: manipulation;
 }
 
-.music-btn:hover {
-    transform: scale(1.1);
+.music-btn:active {
+    transform: scale(0.9);
     box-shadow: 0 6px 15px rgba(229, 9, 20, 0.6);
 }
 
 /* Header */
 .birthday-header {
     text-align: center;
-    margin-bottom: 3rem;
-    padding: 2rem 0;
+    margin-bottom: 2rem;
+    padding: 1rem 0.5rem;
 }
 
 .glitch {
-    font-size: 4rem;
+    font-size: 2.2rem;
     font-weight: 900;
     color: #E50914;
     position: relative;
@@ -249,14 +258,14 @@ body {
 }
 
 .name-title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: #ffffff;
-    margin: 1rem 0;
-    letter-spacing: 3px;
+    margin: 0.8rem 0;
+    letter-spacing: 2px;
 }
 
 .birthday-info {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     color: #999;
     margin-top: 0.5rem;
 }
@@ -266,15 +275,15 @@ body {
    ============================================ */
 .book-container {
     perspective: 1500px;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 .book {
     position: relative;
     width: 100%;
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
-    min-height: 600px;
+    min-height: 450px;
 }
 
 .card {
@@ -282,7 +291,7 @@ body {
     width: 100%;
     background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 100%);
     border-radius: 15px;
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
     border: 2px solid #E50914;
     opacity: 0;
@@ -305,43 +314,43 @@ body {
 
 .card-content {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    min-height: 400px;
+    min-height: 350px;
 }
 
 .card-text {
     flex: 1;
-    min-width: 300px;
-    max-width: 700px;
+    min-width: 100%;
+    max-width: 100%;
     text-align: center;
 }
 
 .card-text h3 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #E50914;
     margin-bottom: 1rem;
     text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
 }
 
 .card-text p {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1rem;
+    line-height: 1.7;
     color: #cccccc;
 }
 
 .final-message {
-    font-size: 1.2rem !important;
+    font-size: 1.1rem !important;
     font-weight: 500;
     color: #ffffff !important;
 }
 
 .confetti-trigger {
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     animation: bounce 1s infinite;
 }
 
@@ -359,26 +368,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    margin-top: 3rem;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    padding: 0 1rem;
 }
 
 .nav-btn {
     padding: 0.8rem 2rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     background: #E50914;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(229, 9, 20, 0.3);
+    touch-action: manipulation;
+    flex: 1;
+    max-width: 150px;
 }
 
-.nav-btn:hover:not(:disabled) {
+.nav-btn:active:not(:disabled) {
     background: #f40612;
-    transform: translateY(-2px);
+    transform: scale(0.95);
     box-shadow: 0 6px 15px rgba(229, 9, 20, 0.5);
 }
 
@@ -389,9 +403,11 @@ body {
 }
 
 .page-indicator {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #ffffff;
     font-weight: bold;
+    min-width: 50px;
+    text-align: center;
 }
 
 /* ============================================
@@ -424,51 +440,95 @@ body {
    ============================================ */
 @media (max-width: 768px) {
     .intro-content h1 {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 1.2rem;
-    }
-
-    .glitch {
-        font-size: 2.5rem;
-    }
-
-    .name-title {
         font-size: 1.8rem;
     }
 
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .glitch {
+        font-size: 2rem;
+    }
+
+    .name-title {
+        font-size: 1.3rem;
+    }
+
     .birthday-info {
-        font-size: 1rem;
+        font-size: 0.85rem;
     }
 
     .netflix-n {
-        font-size: 8rem;
+        font-size: 6rem;
+    }
+
+    .card {
+        padding: 1.2rem;
     }
 
     .card-content {
-        flex-direction: column;
-    }
-
-    .card-text {
-        min-width: 100%;
+        min-height: 320px;
     }
 
     .card-text h3 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .card-text p {
-        font-size: 1rem;
-    }
-
-    .book-nav {
-        flex-direction: column;
-        gap: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
 
     .nav-btn {
-        width: 100%;
+        font-size: 0.95rem;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .glitch {
+        font-size: 1.7rem;
+    }
+
+    .name-title {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    .birthday-info {
+        font-size: 0.75rem;
+    }
+
+    .netflix-n {
+        font-size: 5rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .card-content {
+        min-height: 280px;
+    }
+
+    .card-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .card-text p {
+        font-size: 0.9rem;
+    }
+
+    .confetti-trigger {
+        font-size: 2.5rem;
     }
 }

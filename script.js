@@ -9,25 +9,89 @@ const introScreen = document.getElementById('intro-screen');
 const netflixIntro = document.getElementById('netflix-intro');
 const mainContent = document.getElementById('main-content');
 
-// Make button move around when mouse gets close
-trickyButton.addEventListener('mouseover', function(e) {
-    if (clickCount < maxClicks) {
-        const maxX = window.innerWidth - this.offsetWidth - 100;
-        const maxY = window.innerHeight - this.offsetHeight - 100;
-        
-        const randomX = Math.random() * maxX;
-        const randomY = Math.random() * maxY;
-        
-        this.style.position = 'fixed';
-        this.style.left = randomX + 'px';
-        this.style.top = randomY + 'px';
-        this.style.transform = 'scale(0.9)';
-        
-        setTimeout(() => {
-            this.style.transform = 'scale(1)';
-        }, 100);
-    }
-});
+// Detect if device is touch-enabled
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+// Initialize button position
+function initButtonPosition() {
+    const maxX = window.innerWidth - trickyButton.offsetWidth - 40;
+    const maxY = window.innerHeight - trickyButton.offsetHeight - 40;
+    const centerX = maxX / 2;
+    const centerY = maxY / 2;
+    
+    trickyButton.style.left = centerX + 'px';
+    trickyButton.style.top = centerY + 'px';
+}
+
+// Call on load
+setTimeout(initButtonPosition, 100);
+
+// Make button harder to tap on mobile
+if (isTouchDevice) {
+    // For touch devices - move button on touch start (before they can tap)
+    trickyButton.addEventListener('touchstart', function(e) {
+        if (clickCount < maxClicks) {
+            e.preventDefault();
+            
+            const maxX = window.innerWidth - this.offsetWidth - 40;
+            const maxY = window.innerHeight - this.offsetHeight - 40;
+            
+            // Random position with smooth movement
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            this.style.transition = 'all 0.15s ease-out';
+            this.style.left = randomX + 'px';
+            this.style.top = randomY + 'px';
+            this.style.transform = 'scale(0.85)';
+            
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+        }
+    }, { passive: false });
+    
+    // Also move on touch move (finger approaching)
+    let touchMoveTimer;
+    trickyButton.addEventListener('touchmove', function(e) {
+        if (clickCount < maxClicks) {
+            e.preventDefault();
+            clearTimeout(touchMoveTimer);
+            
+            touchMoveTimer = setTimeout(() => {
+                const maxX = window.innerWidth - this.offsetWidth - 40;
+                const maxY = window.innerHeight - this.offsetHeight - 40;
+                
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+                
+                this.style.left = randomX + 'px';
+                this.style.top = randomY + 'px';
+            }, 50);
+        }
+    }, { passive: false });
+    
+} else {
+    // For desktop - keep original mouseover behavior
+    trickyButton.addEventListener('mouseover', function(e) {
+        if (clickCount < maxClicks) {
+            const maxX = window.innerWidth - this.offsetWidth - 100;
+            const maxY = window.innerHeight - this.offsetHeight - 100;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            this.style.position = 'fixed';
+            this.style.left = randomX + 'px';
+            this.style.top = randomY + 'px';
+            this.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 100);
+        }
+    });
+}
 
 // Handle button clicks
 trickyButton.addEventListener('click', function(e) {
@@ -52,15 +116,15 @@ trickyButton.addEventListener('click', function(e) {
     } else {
         // Funny messages as they click
         const messages = [
-            'Waduh ketinggalan! Coba lagi 😁',
-            'Hampir kena! Semangat! 💪',
-            'Hahaha kecepetan! 😂',
-            'Ayo dong, fokus! 🎯',
-            'Sedikit lagi nih! Keep trying! 🔥',
-            'Jangan nyerah! You can do it! ⭐',
-            'Wow, makin jago nih! 🚀',
-            'Tinggal dikit lagi! 🎊',
-            'Hampir sampai! Last spurt! 🏃‍♀️'
+            'Ahaha ketinggalan! Coba lagi bang',
+            'Hampir kena! Lagi bang',
+            'Hahaha kecepetan!',
+            'Ayo dong, fokus!',
+            'Sedikit lagi nih!',
+            'Jangan nyerah! Awokwok',
+            'Kiw, jago!',
+            'Tinggal dikit lagi!',
+            'Hampir sampai! Last spurt!'
         ];
         
         if (clickCount < messages.length) {
@@ -77,11 +141,6 @@ trickyButton.addEventListener('click', function(e) {
 function startNetflixIntro() {
     introScreen.classList.remove('active');
     netflixIntro.classList.add('active');
-    
-    // Play Netflix sound (optional, using placeholder)
-    const netflixSound = document.getElementById('netflix-sound');
-    netflixSound.volume = 0.3;
-    netflixSound.play().catch(e => console.log('Audio autoplay blocked'));
     
     // After 3 seconds, show main content
     setTimeout(() => {
